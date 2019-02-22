@@ -5,10 +5,11 @@
 
 class RotateMatrix{
 	public static void main(String[] args){
-		char[][]a = {{'A', 'P', 'W', 'X'},
-			    {'S', 'T', 'B', 'C'},
-			    {'Y', 'Z', 'Q', 'K'},
-			    {'D', 'G', 'H', 'I'}};
+		char[][]a = {{'A', 'P', 'W', 'X', 'F'},
+			    {'S', 'T', 'B', 'C', 'E'},
+			    {'Y', 'Z', 'Q', 'K', 'J'},
+			    {'D', 'G', 'H', 'I', 'L'},
+			    {'M', 'N', 'O', 'S', 'U'}};
 
 		System.out.println("Original Matrix:");
 		printMatrix(a);
@@ -26,19 +27,22 @@ class RotateMatrix{
 			int end = (a.length - 1) - layer;
 
 			for(int i = start; i < end; i++){
+				//System.out.println("Start:" + start + " end: " + end + " i: " + i + " --------------");
+				//printMatrix(a);
+				int offset = i - start;
 				char top = a[start][i];
 
 				//top <- left
-				a[start][i] = a[end-i][start];
+				a[start][i] = a[end-offset][start];
 
 				//left <- bottom
-				a[end-i][start] = a[end][end-i];
+				a[end-offset][start] = a[end][end-offset];
 
 				//bottom <- right
-				a[end][end-i] = a[end-i][end];
+				a[end][end-offset] = a[i][end];
 
 				//right <- top
-				a[end-i][end] = top;
+				a[i][end] = top;
 			}
 		}		
 	}
