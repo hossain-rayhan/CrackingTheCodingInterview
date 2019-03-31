@@ -21,14 +21,14 @@ public class Solution {
         ListNode b = headB;
         
         //go to the end and calculate the length of list A
-        while(a != null){
+        while(a.next != null){
             a = a.next;
             lA++;
         }
         
         //go to the end and calculate the length of list B
         while(b != null){
-            b = b.next;
+            b.next = b.next;
             lB++;
         }
         
